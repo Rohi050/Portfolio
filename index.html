@@ -154,17 +154,17 @@
         margin-bottom: 50px;
     }
 
-    .card {
-        background: var(--white);
-        padding: 25px;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        transition: all 0.3s ease;
-        border-top: 4px solid transparent;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
+.card {
+    background: var(--white);
+    padding: 25px; /* Ensure this is present for uniform left/right card spacing */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    border-top: 4px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 
     .card.clickable:hover {
         transform: translateY(-5px);
@@ -307,6 +307,55 @@
     gap: 12px; /* This adds the gap between tags */
     margin-top: 15px;
 }
+
+/* Container alignment fix */
+.tech-stack-footer {
+    margin-top: auto; 
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start; /* Ensures left alignment */
+}
+
+/* Restored uniform padding for boxes */
+.tech-pill {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--primary);
+    background: transparent;
+    border: 1px solid var(--primary);
+    /* Uniform internal padding: 4px top/bottom, 12px left/right */
+    padding: 4px 12px; 
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Pink border version padding uniformity */
+.tech-pill.alt {
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+    padding: 4px 12px; 
+}
+
+/* Privacy/Confidentiality Notice Styling */
+.privacy-notice {
+    font-size: 13px;
+    color: var(--text-muted);
+    background: #f1f5f9;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e2e8f0;
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -351,46 +400,90 @@
             <span><strong>Confidentiality Note:</strong> To respect project licensing and privacy agreements, certain screenshots have been intentionally blurred or anonymized.</span>
         </div>
         <div class="grid">
-            <div class="card clickable" onclick="openGallery('payment')">
-                <img src="payment_manual.png" class="project-thumb">
-                <h3>💳 Native Payment Integration</h3>
-                <p>Native Android SDK integration for KNET/Visa terminals into Flutter POS. Ensured EMV compliance and secure transaction flows.</p>
-                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
-            </div>
-
-            <div class="card clickable" onclick="openGallery('analytics')">
-                <img src="analytics_dashboard.png" class="project-thumb">
-                <h3>📈 AI Analytics Dashboard</h3>
-                <p>Real-time visual BI dashboard built with Python (FastAPI) and AI integration. Aggregates regional sales data with custom JS frontend.</p>
-                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
-            </div>
-
-            <div class="card clickable" onclick="openGallery('pos')">
-                <img src="pos_kudu.png" class="project-thumb">
-                <h3>🖥️ Self-Service Kiosk POS</h3>
-                <p>Unified Kiosk ecosystem built with Flutter. Orchestrates real-time inventory and billing using a resilient hybrid SQL architecture.</p>
-                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
-            </div>
-
-            <div class="card clickable" onclick="openGallery('gym')">
-                <img src="gym_flex.png" class="project-thumb">
-                <h3>🏋️ Gym Management ERP</h3>
-                <p>Full-scale platform for gym chains. Features Flutter-based mobile interfaces with MSSQL backend for scheduling and billing.</p>
-                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
-            </div>
-
-            <div class="card">
-                <div class="icon-placeholder"><i class="fas fa-users-cog"></i></div>
-                <h3>🤝 Mobile CRM & Sync</h3>
-                <p>Kotlin/SQLite synchronization for field agents. Resilient applications that securely auto-sync when internet is restored.</p>
-            </div>
-
-            <div class="card">
-                <div class="icon-placeholder"><i class="fas fa-shopping-bag"></i></div>
-                <h3>🛍️ Full-Stack E-commerce</h3>
-                <p>Scalable e-commerce powered by Spring Boot and Flutter. Advanced cart, payment gateway, and inventory tracking modules.</p>
-            </div>
+    <!-- Project 1 -->
+    <div class="card clickable" onclick="openGallery('payment')">
+        <img src="payment_manual.png" class="project-thumb">
+        <h3>💳 Native Payment Integration</h3>
+        <p>Native Android SDK integration for KNET/Visa terminals into Flutter POS. Ensured EMV compliance and secure transaction flows.</p>
+        <small style="color:var(--primary); font-weight:bold;">View Screenshots →</small>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill">Flutter</span>
+            <span class="tech-pill">Android SDK</span>
+            <span class="tech-pill">KNET</span>
+            <span class="tech-pill">EMV</span>
         </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="card clickable" onclick="openGallery('analytics')">
+        <img src="analytics_dashboard.png" class="project-thumb">
+        <h3>📈 AI Analytics Dashboard</h3>
+        <p>Real-time visual BI dashboard built with Python (FastAPI) and AI integration. Aggregates regional sales data with custom JS frontend.</p>
+        <small style="color:var(--primary); font-weight:bold;">View Screenshots →</small>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill alt">Python</span>
+            <span class="tech-pill alt">FastAPI</span>
+            <span class="tech-pill alt">AI Assisted</span>
+            <span class="tech-pill alt">JS/HTML</span>
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="card clickable" onclick="openGallery('pos')">
+        <img src="pos_kudu.png" class="project-thumb">
+        <h3>🖥️ Self-Service Kiosk POS</h3>
+        <p>Unified Kiosk ecosystem built with Flutter. Orchestrates real-time inventory and billing using a resilient hybrid SQL architecture.</p>
+        <small style="color:var(--primary); font-weight:bold;">View Screenshots →</small>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill">Flutter</span>
+            <span class="tech-pill">.NET Core</span>
+            <span class="tech-pill">MSSQL</span>
+            <span class="tech-pill">SQLite</span>
+        </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="card clickable" onclick="openGallery('gym')">
+        <img src="gym_flex.png" class="project-thumb">
+        <h3>🏋️ Gym Management ERP</h3>
+        <p>Enterprise platform for gym chains. Features Flutter-based mobile interfaces with MSSQL backend for scheduling and billing.</p>
+        <small style="color:var(--primary); font-weight:bold;">View Screenshots →</small>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill">Flutter</span>
+            <span class="tech-pill">MSSQL</span>
+        </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="card">
+        <div class="icon-placeholder"><i class="fas fa-sync-alt"></i></div>
+        <h3>🤝 Mobile CRM & Sync</h3>
+        <p>Kotlin/SQLite synchronization for field agents. Resilient applications that securely auto-sync when internet is restored.</p>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill alt">Kotlin</span>
+            <span class="tech-pill alt">SQLite</span>
+            <span class="tech-pill alt">Offline Sync</span>
+        </div>
+    </div>
+
+    <!-- Project 6 -->
+    <div class="card">
+        <div class="icon-placeholder"><i class="fas fa-shopping-cart"></i></div>
+        <h3>🛍️ Full-Stack E-commerce</h3>
+        <p>Scalable e-commerce powered by Spring Boot and Flutter. Advanced cart, payment gateway, and inventory tracking modules.</p>
+        
+        <div class="tech-stack-footer">
+            <span class="tech-pill">Spring Boot</span>
+            <span class="tech-pill">Flutter</span>
+            <span class="tech-pill">MSSQL</span>
+        </div>
+    </div>
+</div>
     </section>
 
     <!-- FULL 11 PURPOSE-BUILT SOLUTIONS LIST -->
