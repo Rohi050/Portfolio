@@ -118,7 +118,7 @@
         padding: 40px 20px;
     }
 
-    /* SPACE OPTIMIZED SPLIT SECTION (About + Services) */
+    /* SPLIT SECTION */
     .split-section {
         display: flex;
         flex-wrap: wrap;
@@ -135,19 +135,6 @@
         border: 1px solid rgba(255,255,255,0.5);
     }
 
-    .about-box p {
-        font-size: 16px;
-        color: var(--text-muted);
-        line-height: 1.7;
-    }
-
-    .service-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 15px;
-    }
-
     .tag {
         background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(236,72,153,0.08));
         color: var(--primary);
@@ -158,13 +145,8 @@
         border: 1px solid rgba(99,102,241,0.15);
         transition: 0.3s;
     }
-    
-    .tag:hover {
-        background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(236,72,153,0.15));
-        transform: translateY(-2px);
-    }
 
-    /* BUSINESS SOLUTIONS GRID */
+    /* GRID FOR SOLUTIONS & FEATURED */
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,9 +162,17 @@
         transition: all 0.3s ease;
         border-top: 4px solid transparent;
         position: relative;
+        display: flex;
+        flex-direction: column;
     }
 
-    /* Colorful Card Borders (Repeating Pattern) */
+    .card.clickable:hover {
+        transform: translateY(-5px);
+        cursor: pointer;
+        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+    }
+
+    /* Colorful Card Borders */
     .card:nth-child(6n+1) { border-top-color: #3b82f6; }
     .card:nth-child(6n+2) { border-top-color: #8b5cf6; }
     .card:nth-child(6n+3) { border-top-color: #ec4899; }
@@ -190,38 +180,34 @@
     .card:nth-child(6n+5) { border-top-color: #10b981; }
     .card:nth-child(6n+6) { border-top-color: #06b6d4; }
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    .project-thumb {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
     }
 
-    .card h3 {
-        font-size: 18px;
-        margin-bottom: 8px;
+    .icon-placeholder {
+        width: 100%;
+        height: 160px;
+        background: #f1f5f9;
+        border-radius: 10px;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
-        gap: 8px;
-        color: var(--text-main);
-        font-weight: 700;
+        justify-content: center;
+        font-size: 50px;
+        color: #cbd5e1;
     }
 
-    .card p {
-        font-size: 15px;
-        color: var(--text-muted);
-        line-height: 1.6;
-    }
-
-    /* SPACE OPTIMIZED PROCESS TIMELINE */
-    .process-wrapper {
-        margin-bottom: 50px;
-    }
-
+    /* PROCESS TIMELINE */
     .process-container {
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
         justify-content: center;
-        margin-top: 20px;
+        margin: 20px 0 50px 0;
     }
 
     .process-step {
@@ -235,12 +221,6 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        transition: 0.3s;
-    }
-
-    .process-step:hover {
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
-        color: var(--primary);
     }
 
     .process-step span {
@@ -256,6 +236,52 @@
         font-weight: bold;
     }
 
+    /* MODAL / CAROUSEL */
+    #gallery-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(15, 23, 42, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .modal-content {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-img {
+        display: none;
+        max-height: 80vh;
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    
+    .carousel-img.active { display: block; }
+
+    .nav-btn {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+    
+    .nav-btn:hover { background: var(--primary); }
+
     /* CONTACT SECTION */
     .contact-wrapper {
         display: flex;
@@ -267,128 +293,21 @@
         box-shadow: 0 15px 40px rgba(0,0,0,0.05);
     }
 
-    .contact-info {
-        flex: 1 1 300px;
-    }
+    .contact-info { flex: 1 1 300px; }
+    .contact-form { flex: 1 1 400px; }
 
-    .contact-info h3 {
-        font-size: 20px;
-        color: var(--text-main);
-        margin-bottom: 15px;
-    }
+    input, textarea { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; margin-bottom: 15px; font-family: inherit; font-size: 15px; }
+    button[type="submit"] { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; padding: 15px; border: none; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s; }
 
-    .contact-detail {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 15px;
-        font-size: 15px;
-        color: var(--text-muted);
-        font-weight: 500;
-    }
+    .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 100; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
-    .contact-icon {
-        background: rgba(99,102,241,0.1);
-        color: var(--primary);
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-    }
-
-    .contact-form {
-        flex: 1 1 400px;
-    }
-
-    .form-group {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    @media (max-width: 600px) {
-        .form-group { flex-direction: column; }
-    }
-
-    input, textarea {
-        width: 100%;
-        padding: 15px;
-        border: 2px solid #e2e8f0;
-        border-radius: 10px;
-        font-family: inherit;
-        font-size: 15px;
-        background: #f8fafc;
-        transition: 0.3s;
-    }
-
-    input:focus, textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: var(--white);
-        box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
-    }
-
-    button[type="submit"] {
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        color: white;
-        padding: 15px 25px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-weight: bold;
-        width: 100%;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(236,72,153,0.2);
-    }
-
-    button[type="submit"]:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(236,72,153,0.3);
-    }
-
-    /* FOOTER */
-    footer {
-        text-align: center;
-        padding: 30px;
-        background: transparent;
-        color: var(--text-muted);
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    /* FLOATING WHATSAPP */
-    .whatsapp-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: #25D366;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        transition: 0.3s;
-        z-index: 100;
-    }
-
-    .whatsapp-btn:hover {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
-    }
-
-    .whatsapp-btn img {
-        width: 32px;
-        filter: brightness(0) invert(1);
-    }
+    .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* This adds the gap between tags */
+    margin-top: 15px;
+}
 </style>
-<!-- Add FontAwesome for professional icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -396,31 +315,78 @@
 
 <header>
     <h1>Rohini Gnanasekar</h1>
-    <p>Senior Software Architect</p>
+    <p>Senior Full-Stack Developer</p>
     <div class="subtitle">Digitizing Retailers, Stores & SMEs in Kuwait</div><br>
     <a href="#contact" class="btn">Get a Free Consultation</a>
 </header>
 
 <div class="container">
     
-    <!-- SPACE OPTIMIZED SPLIT SECTION -->
+    <!-- EXECUTIVE PROFILE -->
     <div class="split-section">
         <div class="about-box">
             <h2>👤 Executive Profile</h2>
-            <p>I am a Senior Full-Stack Software Architect with <strong>9+ years of industry experience</strong> engineering highly scalable systems. Whether you operate a single retail boutique or a multi-branch enterprise, I design secure, high-performance software tailored exclusively to streamline your daily operations and maximize profitability.</p>
+            <p>I am a Senior Full-Stack Software Architect with <strong>9+ years of industry experience</strong>. I specialize in engineered high-uptime systems using a hybrid <strong>MSSQL Cloud & SQLite Local</strong> architecture, bridging complex FinTech backends with high-performance Flutter interfaces.</p>
         </div>
         <div class="services-box">
             <h2>💻 Enterprise Technologies</h2>
             <div class="service-tags">
-                <div class="tag">💳 K-Net / Tap Integrations</div>
-                <div class="tag">🌍 Bilingual Architecture</div>
-                <div class="tag">📱 Native iOS & Android</div>
-                <div class="tag">☁️ Cloud Infrastructure</div>
+                <div class="tag">💳 K-Net / Native SDKs</div>
+                <div class="tag">📱 Flutter / Native iOS & Android</div>
+                <div class="tag">🐍 Python / FastAPI / AI Engineer</div>
+                <div class="tag">☁️ .NET Core / MSSQL</div>
+                <div class="tag">☁️ Spring Boot Java / MSSQL</div>
             </div>
         </div>
     </div>
 
-    <!-- BUSINESS SOLUTIONS TARGETED FOR KUWAIT -->
+    <!-- FEATURED PROJECTS (GRID WITH CAROUSEL) -->
+    <section>
+        <h2>🚀 Featured Projects</h2>
+        <div class="grid">
+            <div class="card clickable" onclick="openGallery('payment')">
+                <img src="payment_manual.png" class="project-thumb">
+                <h3>💳 Native Payment Integration</h3>
+                <p>Native Android SDK integration for KNET/Visa terminals into Flutter POS. Ensured EMV compliance and secure transaction flows.</p>
+                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
+            </div>
+
+            <div class="card clickable" onclick="openGallery('analytics')">
+                <img src="analytics_dashboard.png" class="project-thumb">
+                <h3>📈 AI Analytics Dashboard</h3>
+                <p>Real-time visual BI dashboard built with Python (FastAPI) and AI integration. Aggregates regional sales data with custom JS frontend.</p>
+                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
+            </div>
+
+            <div class="card clickable" onclick="openGallery('pos')">
+                <img src="pos_kudu.png" class="project-thumb">
+                <h3>🖥️ Self-Service Kiosk POS</h3>
+                <p>Unified Kiosk ecosystem built with Flutter. Orchestrates real-time inventory and billing using a resilient hybrid SQL architecture.</p>
+                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
+            </div>
+
+            <div class="card clickable" onclick="openGallery('gym')">
+                <img src="gym_flex.png" class="project-thumb">
+                <h3>🏋️ Gym Management ERP</h3>
+                <p>Full-scale platform for gym chains. Features Flutter-based mobile interfaces with MSSQL backend for scheduling and billing.</p>
+                <small style="color:var(--primary); font-weight:bold; margin-top:auto;">View Screenshots →</small>
+            </div>
+
+            <div class="card">
+                <div class="icon-placeholder"><i class="fas fa-users-cog"></i></div>
+                <h3>🤝 Mobile CRM & Sync</h3>
+                <p>Kotlin/SQLite synchronization for field agents. Resilient applications that securely auto-sync when internet is restored.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-placeholder"><i class="fas fa-shopping-bag"></i></div>
+                <h3>🛍️ Full-Stack E-commerce</h3>
+                <p>Scalable e-commerce powered by Spring Boot and Flutter. Advanced cart, payment gateway, and inventory tracking modules.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL 11 PURPOSE-BUILT SOLUTIONS LIST -->
     <section>
         <h2>💡 Purpose-Built Solutions</h2>
         <div class="grid">
@@ -482,7 +448,7 @@
     </section>
 
     <!-- PROCESS TIMELINE -->
-    <section class="process-wrapper">
+    <section>
         <h2 style="text-align: center; display: block;">🛠️ Development Lifecycle</h2>
         <div class="process-container">
             <div class="process-step"><span>1</span> Free Consultation</div>
@@ -494,52 +460,82 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION (Redesigned for Professionalism) -->
+    <!-- CONTACT SECTION (FORMSUBMIT PRESERVED) -->
     <section id="contact" class="contact-wrapper">
         <div class="contact-info">
             <h2>✉️ Let's Scale Your Business</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">Ready to modernize your operations? Drop me a message below or reach out directly. I respond to all inquiries within 24 hours.</p>
-            
-            <div class="contact-detail">
-                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <span>Al Salmiya, Kuwait</span>
-            </div>
-            <div class="contact-detail">
-                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-                <span>rohignanasekar@gmail.com</span>
-            </div>
-            <div class="contact-detail">
-                <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                <span>+91 76675 87612</span>
-            </div>
+            <div class="contact-detail" style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><i class="fa-solid fa-location-dot" style="color:var(--primary);"></i> <span>Al Salmiya, Kuwait</span></div>
+            <div class="contact-detail" style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><i class="fa-solid fa-envelope" style="color:var(--primary);"></i> <span>rohignanasekar@gmail.com</span></div>
+            <div class="contact-detail" style="display:flex; align-items:center; gap:12px;"><i class="fa-brands fa-whatsapp" style="color:var(--primary);"></i> <span>+91 76675 87612 | +965 98929839</span></div>
         </div>
 
         <div class="contact-form">
             <form action="https://formsubmit.co/rohignanasekar@gmail.com" method="POST">
                 <input type="hidden" name="_captcha" value="true">
                 <input type="hidden" name="_subject" value="New Business Lead from Portfolio!">
-                
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name or Business Name" required>
-                    <input type="text" name="phone" placeholder="Phone Number (WhatsApp)" required>
+                <div style="display:flex; gap:15px;">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="text" name="phone" placeholder="WhatsApp Number" required>
                 </div>
-
-                <textarea name="message" placeholder="Tell me about your business (e.g. I run a textile shop and need a better billing system...)" rows="4" required style="margin-bottom: 15px;"></textarea>
+                <textarea name="message" placeholder="Brief details about your business shop or requirement..." rows="4" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>
     </section>
-
 </div>
 
 <footer>
     © 2026 Rohini Gnanasekar. Engineered for Growth.
 </footer>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/917667587612?text=Hello%20Rohini!%20I%20saw%20your%20portfolio%20and%20I%20am%20looking%20for%20a%20software%20solution%20for%20my%20business%20in%20Kuwait." class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+<!-- CAROUSEL MODAL SYSTEM -->
+<div id="gallery-modal">
+    <button onclick="closeGallery()" style="position:absolute; top:20px; right:25px; background:none; border:none; color:white; font-size:45px; cursor:pointer; z-index:1001;">&times;</button>
+    <div class="modal-content">
+        <button class="nav-btn" onclick="prevImg()"><i class="fas fa-chevron-left"></i></button>
+        <div id="carousel-box" style="flex:1; display:flex; justify-content:center; align-items:center;"></div>
+        <button class="nav-btn" onclick="nextImg()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/917667587612" class="whatsapp-btn" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" style="width:32px; filter:brightness(0) invert(1);">
 </a>
+
+<script>
+    const images = {
+        'payment': ['payment_manual.png'],
+        'analytics': ['analytics_dashboard.png', 'analytics_filter.png', 'analytics_settings.png'],
+        'pos': ['pos_kudu.png', 'pos_order_success.png'],
+        'gym': ['gym_flex.png', 'gym_menu.png', 'gym_list.png', 'gym_menu1.png']
+    };
+    
+    let currentSet = [];
+    let idx = 0;
+
+    function openGallery(key) {
+        currentSet = images[key];
+        idx = 0;
+        const box = document.getElementById('carousel-box');
+        box.innerHTML = currentSet.map((s, i) => `<img src="${s}" class="carousel-img ${i===0?'active':''}" alt="screenshot">`).join('');
+        document.getElementById('gallery-modal').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeGallery() { 
+        document.getElementById('gallery-modal').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+    }
+    
+    function nextImg() { idx = (idx+1)%currentSet.length; update(); }
+    function prevImg() { idx = (idx-1+currentSet.length)%currentSet.length; update(); }
+    
+    function update() {
+        const imgs = document.querySelectorAll('.carousel-img');
+        imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+    }
+</script>
 
 </body>
 </html>
